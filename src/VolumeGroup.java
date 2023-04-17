@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class VolumeGroup extends HardDrive{
@@ -12,10 +13,12 @@ public class VolumeGroup extends HardDrive{
     }
 
     public void addLogicalVolumes(LogicalVolumes l){
-        lvList.add(l);
+        if(!lvList.contains(l)){
+        lvList.add(l);}
     }
     public void addPhysicalVolumes(PhysicalVolume p){
-        pvList.add(p);
+        if(!pvList.contains(p)){
+        pvList.add(p);}
     }
 
     public double getNumOfFreeSpace(){
@@ -33,5 +36,23 @@ public class VolumeGroup extends HardDrive{
         else {return 0;}
 
     }
+    public List<PhysicalVolume> getPhysicalVolumes(){return pvList;}
+    public List<LogicalVolumes> getLogicalVolumes(){return lvList;}
+
+    public boolean removePhysicalVolume(PhysicalVolume pv) {
+        if (pvList.contains(pv)) {
+            pvList.remove(pv);
+            return true;
+        }
+        return false;
+    }
+    public boolean removeLogicalVolume(LogicalVolumes lv) {
+        if (lvList.contains(lv)) {
+            lvList.remove(lv);
+            return true;
+        }
+        return false;
+    }
+
 
 }

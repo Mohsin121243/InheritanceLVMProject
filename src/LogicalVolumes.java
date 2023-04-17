@@ -7,4 +7,8 @@ public class LogicalVolumes extends HardDrive {
         this.v = v;
     }
 
+    public VolumeGroup getVolumeGroup(){
+        return v;
+    }
+
 }
